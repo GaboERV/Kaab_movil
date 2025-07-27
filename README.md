@@ -45,7 +45,7 @@ Kaab es una aplicación móvil desarrollada con React Native y Expo para el moni
 ### 1. Clonar el Repositorio
 ```bash
 git clone git clone https://github.com/GaboERV/Kaab_movil.git
-cd kaab-mobile-app
+cd kaab_movil
 ```
 
 ### 2. Instalar Dependencias
