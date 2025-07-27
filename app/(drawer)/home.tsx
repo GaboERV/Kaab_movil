@@ -12,7 +12,7 @@ import { Ionicons, Feather } from "@expo/vector-icons";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
-import { ApiBackend } from "../ApiBackend";
+import { ApiBackend } from "../../ApiBackend";
 interface Colmena {
   colmena_id: string;
   nombre: string;

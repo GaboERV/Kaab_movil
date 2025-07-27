@@ -7,11 +7,11 @@ import { View, Platform, BackHandler } from "react-native"
 import * as Notifications from "expo-notifications"
 import * as SQLite from "expo-sqlite"
 
-import { WebSocketProvider, WebSocketContext, useWebSocket } from "./WebSocketContext"
-import createWebSocketHandler from "./websocketHandler"
+import { WebSocketProvider, WebSocketContext, useWebSocket } from "../WebSocketContext"
+import createWebSocketHandler from "../websocketHandler"
 import { Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
-import { ApiBackend } from './ApiBackend'; // Importa la dirección del backend
+import { ApiBackend } from '../ApiBackend'; // Importa la dirección del backend
 
 
 // Configuración básica de notificaciones locales

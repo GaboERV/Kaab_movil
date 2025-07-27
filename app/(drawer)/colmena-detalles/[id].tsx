@@ -16,9 +16,9 @@ import { Ionicons, Feather } from "@expo/vector-icons"
 import { DrawerActions, useNavigation } from "@react-navigation/native"
 import { useLocalSearchParams } from "expo-router"
 import * as SecureStore from "expo-secure-store"
-import GraficaHistorico from "../../SensorChart" // Import the new component
-import TimeSelecterComponent from "../../SelectTimeComponent"
-import { ApiBackend } from "../../ApiBackend"
+import GraficaHistorico from "../../../components/SensorChart" // Import the new component
+import TimeSelecterComponent from "../../../components/SelectTimeComponent"
+import { ApiBackend } from "../../../ApiBackend"
 
 interface Parametros {
   nombre: string

@@ -14,7 +14,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import WaveBackground from '../components/WaveBackground';
-import { ApiBackend } from './ApiBackend'; // Importa la dirección del backend
+import { ApiBackend } from '../ApiBackend'; // Importa la dirección del backend
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');

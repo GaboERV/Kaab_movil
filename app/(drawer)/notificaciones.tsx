@@ -11,7 +11,7 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import * as SQLite from "expo-sqlite";
-import { useWebSocket } from "../WebSocketContext"; // Importa el contexto
+import { useWebSocket } from "../../WebSocketContext"; // Importa el contexto
 
 
 
