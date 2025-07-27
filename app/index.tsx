@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,7 +12,9 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import * as SecureStore from 'expo-secure-store';
 import WaveBackground from '../components/WaveBackground';
+import { ApiBackend } from './ApiBackend'; // Importa la dirección del backend
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -50,8 +52,7 @@ export default function LoginScreen() {
 
     try {
       // 🔒 Lógica de autenticación con backend (POST /auth/login)
-      /*
-      const response = await fetch('https://tu-backend.com/api/auth/login', {
+      const response = await fetch(`http://${ApiBackend}:3000/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -69,16 +70,29 @@ export default function LoginScreen() {
       await SecureStore.setItemAsync('session_token', data.token);
 
       // 👉 Redirigir a la pantalla principal tras login exitoso
-      router.push('/(drawer)/home');
-      */
+      router.replace('/(drawer)/home');
 
-      // 🔁 TEMPORAL: navegación directa mientras se integra el backend
-      router.push('/(drawer)/home');
     } catch (error) {
       console.error('❌ Error al iniciar sesión:', error);
       setErrors({ ...errors, password: 'Error de red o servidor' });
     }
   };
+
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = await SecureStore.getItemAsync('session_token');
+        if (token) {
+          // Token existe, redirigir a la pantalla principal
+          router.replace('/(drawer)/home'); // Usa replace para evitar volver atrás
+        }
+      } catch (error) {
+        console.error('Error checking token:', error);
+      }
+    };
+
+    checkToken();
+  }, []);
 
   return (
     <SafeAreaView style={styles.safeArea}>

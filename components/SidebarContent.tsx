@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
-} from '@react-navigation/drawer';
-import { View, Text, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+} from "@react-navigation/drawer";
+import { View, Text, StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 
 export default function SidebarContent(props: any) {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function SidebarContent(props: any) {
     // 1. Eliminar token de sesión seguro
     // Ejemplo si usas SecureStore de Expo:
     // import * as SecureStore from 'expo-secure-store';
-    // await SecureStore.deleteItemAsync('session_token');
+    await SecureStore.deleteItemAsync("session_token");
 
     // 2. Limpiar estado global si usas contexto:
     // authContext.logout();
@@ -30,12 +31,14 @@ export default function SidebarContent(props: any) {
     // });
 
     // 4. Redirigir al login global
-    router.replace('/index');
+    router.replace("/"); // Usa '/' para la ruta raíz en expo-router
   };
 
-
   return (
-    <DrawerContentScrollView {...props} contentContainerStyle={styles.container}>
+    <DrawerContentScrollView
+      {...props}
+      contentContainerStyle={styles.container}
+    >
       {/* Título */}
       <Text style={styles.title}>KAAB</Text>
 
@@ -62,21 +65,21 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingHorizontal: 20,
     marginBottom: 20,
   },
   footer: {
-    marginTop: 'auto',
+    marginTop: "auto",
     paddingHorizontal: 20,
     paddingBottom: 20,
   },
   logoutButton: {
-    backgroundColor: '#f87171',
+    backgroundColor: "#f87171",
     borderRadius: 8,
   },
   logoutLabel: {
-    color: '#fff',
-    fontWeight: '600',
+    color: "#fff",
+    fontWeight: "600",
   },
 });
